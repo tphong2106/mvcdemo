@@ -21,4 +21,12 @@ class ProductModel
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([$name, $price, $image]);
     }
+    public function getProductById($id)
+    {
+        $sql = "SELECT * FROM products WHERE Id = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
