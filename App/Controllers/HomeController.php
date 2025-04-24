@@ -1,9 +1,12 @@
 <?php
+require_once __DIR__ .'/../Model/ProductModel.php';
 class HomeController
 {
     public function index()
     {
-        include __DIR__ . '/../Views/User/index.php';
+        $product = new ProductModel();
+        $productlist = $product->getAllProducts();
+        include __DIR__ . '/../Views/Home/index.php';
     }
-
+    
 }
